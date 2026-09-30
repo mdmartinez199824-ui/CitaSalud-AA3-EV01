@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>CitaSalud</title><link rel="stylesheet" th:href="@{/css/estilos.css}"></head>
+<body><main class="contenedor"><header><h1>CitaSalud</h1><p>Gestión de citas médicas</p></header>
+<section class="tarjeta"><h2>Registrar cita</h2>
+<form th:action="@{/citas}" th:object="${cita}" method="post" id="formCita">
+<label>Paciente</label><input id="paciente" th:field="*{paciente}" required>
+<label>Documento</label><input th:field="*{documento}" required>
+<label>Especialidad</label><select th:field="*{especialidad}" required><option value="">Seleccione</option><option value="Medicina general">Medicina general</option><option value="Odontologia">Odontología</option><option value="Pediatria">Pediatría</option></select><label>Médico</label><input th:field="*{medico}" required>
+<label>Fecha</label><input id="fecha" type="date" th:field="*{fecha}" required>
+<label>Hora</label><input type="time" th:field="*{hora}" required>
+<button type="submit">Registrar cita</button></form></section>
+<section class="tarjeta"><h2>Citas registradas</h2><p th:if="${#lists.isEmpty(citas)}">No hay citas registradas.</p>
+<table th:if="${!#lists.isEmpty(citas)}"><thead><tr><th>ID</th><th>Paciente</th><th>Especialidad</th><th>Médico</th><th>Fecha</th><th>Hora</th><th>Estado</th></tr></thead>
+<tbody><tr th:each="x:${citas}"><td th:text="${x.id}"></td><td th:text="${x.paciente}"></td><td th:text="${x.especialidad}"></td><td th:text="${x.medico}"></td><td th:text="${x.fecha}"></td><td th:text="${x.hora}"></td><td th:text="${x.estado}"></td></tr></tbody></table></section>
+</main><script th:src="@{/js/app.js}"></script></body></html>

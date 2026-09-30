@@ -1,0 +1,2 @@
+/* Validación complementaria del formulario antes de enviarlo. */
+document.addEventListener("DOMContentLoaded",()=>{const f=document.getElementById("formCita");f.addEventListener("submit",e=>{if(!document.getElementById("fecha").value){e.preventDefault();alert("Debe seleccionar una fecha.");}});});
