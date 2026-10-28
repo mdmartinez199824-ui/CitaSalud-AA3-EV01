@@ -4,7 +4,7 @@
 <section class="tarjeta"><h2>Registrar cita</h2>
 <form th:action="@{/citas}" th:object="${cita}" method="post" id="formCita">
 <label>Paciente</label><input id="paciente" th:field="*{paciente}" required>
-<label>Documento</label><input th:field="*{documento}" required>
+<label>Documento</label><input type="text" th:field="*{documento}" pattern="[0-9]+" maxlength="10" title="Ingrese únicamente números, máximo 10 dígitos" required>
 <label>Especialidad</label><select th:field="*{especialidad}" required><option value="">Seleccione</option><option value="Medicina general">Medicina general</option><option value="Odontologia">Odontología</option><option value="Pediatria">Pediatría</option></select><label>Médico</label><input th:field="*{medico}" required>
 <label>Fecha</label><input id="fecha" type="date" th:field="*{fecha}" required>
 <label>Hora</label><input type="time" th:field="*{hora}" required>
